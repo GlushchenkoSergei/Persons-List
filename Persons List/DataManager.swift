@@ -17,6 +17,7 @@ class DataManager {
         "Mihail",
         "Alexey",
         "Egor"]
+    
     let surnames = [
         "Glushchenko",
         "Avilov",
@@ -26,6 +27,7 @@ class DataManager {
         "Lazutin",
         "Rizkov"
     ]
+    
     let emails = [
         "qwerty@mail.ru",
         "some@icloud.com",
@@ -35,6 +37,7 @@ class DataManager {
         "leha@ru",
         "riziy@mail.ru"
     ]
+    
     let phones = [
         "89761112233",
         "89324512233",
@@ -44,6 +47,4 @@ class DataManager {
         "89333333333",
         "89995777755"
     ]
-    
-   
-    }
+}

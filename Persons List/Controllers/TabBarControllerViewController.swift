@@ -11,12 +11,10 @@ class TabBarViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupPersonsListVC()
         setupPersonsSectionVC()
     }
-    
-    private let person = Person.getPersons(DataManager())
+    private let persons = (Person.getPersons(DataManager())).shuffled()
 }
 
 
@@ -24,12 +22,13 @@ extension TabBarViewController {
     private func setupPersonsListVC(){
         guard let navigation = viewControllers?.first as? UINavigationController else { return }
         guard let personListVC = navigation.topViewController as? PersonsListViewController else { return }
-        personListVC.person = person
+        personListVC.persons = persons
     }
     private func setupPersonsSectionVC(){
         guard let navigation = viewControllers?.last as? UINavigationController else { return }
         guard let personSectionVC = navigation.topViewController as? PersonsSectionViewController else {return}
-        personSectionVC.person = person
+        personSectionVC.persons = persons
     }
+    
 }
 

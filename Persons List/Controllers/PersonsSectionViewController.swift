@@ -9,39 +9,40 @@ import UIKit
 
 class PersonsSectionViewController: UITableViewController {
 
-    var person: [Person]!
+    var persons: [Person]!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        print(person.last?.fullName ?? "")
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        persons[section].fullName
     }
-
-    // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        person.first?.fullName.count ?? 0
+        persons.count
     }
-
+    // Тут немного хардкода 🤷🏻‍♂️
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return 2
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "sectionPersons", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
+        if indexPath.row == 0 {
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "sectionPersons", for: indexPath)
+            var content = cell.defaultContentConfiguration()
+            content.text = "\(persons[indexPath.section].phone)"
+            content.image = .init(systemName: "phone")
+            cell.contentConfiguration = content
+            return cell
+            
+        } else {
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "sectionPersons", for: indexPath)
+            var content = cell.defaultContentConfiguration()
+            content.text = "\(persons[indexPath.section].email)"
+            content.image = .init(systemName: "tray")
+            cell.contentConfiguration = content
+            return cell
+        }
     }
-    
-
-
-
 }

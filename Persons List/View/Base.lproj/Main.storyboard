@@ -54,6 +54,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="RFh-WS-Tc5" kind="show" id="Dhz-gd-bJh"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -62,9 +65,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Personal List" id="Vdr-fB-tWf"/>
-                    <connections>
-                        <segue destination="RFh-WS-Tc5" kind="show" identifier="segueDetails" id="aFr-Dh-Pda"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xk6-DQ-J8C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -73,14 +73,42 @@
         <!--Personal List-->
         <scene sceneID="qhv-0a-cs1">
             <objects>
-                <viewController id="RFh-WS-Tc5" sceneMemberID="viewController">
+                <viewController id="RFh-WS-Tc5" customClass="DetailsViewController" customModule="Persons_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="J5x-ok-P76">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="B1w-qo-ADF">
+                                <rect key="frame" x="20" y="217" width="374" height="85"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9kc-8l-SFE">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="33.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lIZ-f8-7y2">
+                                        <rect key="frame" x="0.0" y="51.5" width="374" height="33.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="tlD-Z4-cQB"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="B1w-qo-ADF" firstAttribute="leading" secondItem="tlD-Z4-cQB" secondAttribute="leading" constant="20" id="ONl-wq-vCW"/>
+                            <constraint firstItem="tlD-Z4-cQB" firstAttribute="trailing" secondItem="B1w-qo-ADF" secondAttribute="trailing" constant="20" id="Wl8-uD-Qst"/>
+                            <constraint firstItem="B1w-qo-ADF" firstAttribute="top" secondItem="tlD-Z4-cQB" secondAttribute="top" constant="77" id="pb7-pi-7dv"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Personal List" id="SS0-FA-Y5d"/>
+                    <connections>
+                        <outlet property="email" destination="lIZ-f8-7y2" id="fau-Ps-8P8"/>
+                        <outlet property="phone" destination="9kc-8l-SFE" id="zL9-K0-5IY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oJX-2F-OER" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -113,7 +141,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="sqU-0M-5i6" kind="relationship" relationship="rootViewController" destinationCreationSelector="personsSection" id="0S3-ZK-qEl"/>
+                        <segue destination="sqU-0M-5i6" kind="relationship" relationship="rootViewController" id="0S3-ZK-qEl"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U4X-7Z-qzm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -131,8 +159,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="jtP-Zj-bLU" kind="relationship" relationship="viewControllers" destinationCreationSelector="personsListNC" id="6e1-je-8nc"/>
-                        <segue destination="ogF-uj-nhu" kind="relationship" relationship="viewControllers" destinationCreationSelector="personsSectionNC" id="1hS-y1-aCM"/>
+                        <segue destination="jtP-Zj-bLU" kind="relationship" relationship="viewControllers" id="6e1-je-8nc"/>
+                        <segue destination="ogF-uj-nhu" kind="relationship" relationship="viewControllers" id="1hS-y1-aCM"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gtT-bc-tmF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
