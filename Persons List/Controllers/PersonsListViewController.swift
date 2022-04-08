@@ -13,7 +13,7 @@ class PersonsListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-   
+        print(person.first?.fullName ?? "")
     }
    
    
@@ -21,21 +21,23 @@ class PersonsListViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
-        return 0
+        person.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "listPersons", for: indexPath)
-
-
+        var content = cell.defaultContentConfiguration()
+        let personFromArray = person[indexPath.row]
+        
+        content.text = personFromArray.fullName
+        cell.contentConfiguration = content
 
         return cell
     }
     
 
- 
+    segueDetails
     
     // MARK: - Navigation
 
