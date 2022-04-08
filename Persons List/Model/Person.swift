@@ -20,14 +20,17 @@ struct Person {
     static func getPersons(_ data: DataManager) -> [Person] {
         var persons: [Person] = []
         
-        for index in 0...data.names.count - 1 {
-            persons.append(Person(name: data.names[index],
-                                 surname: data.surnames[index],
-                                 email: data.emails[index],
-                                 phone: data.phones[index]))
+        var name = data.names.shuffled()
+        var surname = data.surnames.shuffled()
+        var phone = data.phones.shuffled()
+        var email = data.emails.shuffled()
+        
+        for _ in 0...data.names.count - 1 {
+            persons.append(Person(name: name.removeFirst(),
+                                 surname: surname.removeFirst(),
+                                 email: email.removeFirst(),
+                                 phone: phone.removeFirst()))
         }
         return persons
     }
-    
 }
-
