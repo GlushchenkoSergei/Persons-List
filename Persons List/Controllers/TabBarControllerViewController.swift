@@ -14,7 +14,7 @@ class TabBarViewController: UITabBarController {
         setupPersonsListVC()
         setupPersonsSectionVC()
     }
-    private let persons = (Person.getPersons(DataManager())).shuffled()
+    private let persons = Person.getPersons()
 }
 
 
